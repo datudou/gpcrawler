@@ -31,7 +31,7 @@ def parserPage(page):
     for i in range(len(discount)):
         item_discount=discount[i].string.strip()
         item_rates.append(item_discount[0:len(item_discount)-1])
-##        item_o_price.append(item_c_price/discount_r)          ##获取原来的价格
+##        item_o_price.append(item_c_price/discount_r)          
     return item_title,item_pop_n,item_c_price,item_rates
 if __name__=="__main__":
     file=open(r'd:\text.csv','w')
