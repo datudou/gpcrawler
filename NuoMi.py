@@ -1,11 +1,10 @@
 # -*- coding=utf-8 -*-
 import urllib2
 from BeautifulSoup import BeautifulSoup
-from pyExcelerator import *
-city=['sz']
+cities=['nj']
 def downloadPage():
-    for i in range(len(city)):
-        url='http://%s.nuomi.com'%city[i]
+    for city in cities:
+        url='http://%s.nuomi.com'%city
         page=urllib2.urlopen(url).read()
         return page
 def parserPage(page):
@@ -16,7 +15,7 @@ def parserPage(page):
 ##    item_o_price=[]
     soup=BeautifulSoup(page)
     title=soup.findAll('h3')
-    for i in range(3,len(title)-4):
+    for i in range(4,len(title)-4):
         item_title.append(''.join(title[i].contents[1].string.strip().split()))##获取物品标题
         
     people= soup.findAll("div",{"class":"totalpop"})
@@ -34,7 +33,7 @@ def parserPage(page):
 ##        item_o_price.append(item_c_price/discount_r)          
     return item_title,item_pop_n,item_c_price,item_rates
 if __name__=="__main__":
-    file=open(r'd:\text.csv','w')
+    file=open(r'd:\textdada.csv','w')
     page=downloadPage()
     title,people,curprice,rate=parserPage(page)
     for x,y,z,k in zip(title,people,curprice,rate):
