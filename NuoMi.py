@@ -1,5 +1,6 @@
 # -*- coding=utf-8 -*-
 import re
+import math
 import urllib2
 from BeautifulSoup import BeautifulSoup
 cities=['nj']
